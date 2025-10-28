@@ -42,8 +42,6 @@ function preventImageDownload() {
 
 // Lightbox functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Prevent image downloads
-  preventImageDownload();
   // Set current year in footer
   try {
     var y = document.getElementById('year');
@@ -56,31 +54,31 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeButton = document.querySelector('.lightbox-close');
   const prevButton = document.querySelector('.lightbox-button.prev');
   const nextButton = document.querySelector('.lightbox-button.next');
-  const galleryItems = document.querySelectorAll('.gallery-item img');
+  const galleryItems = document.querySelectorAll('.gallery-item');
   
   let currentImageIndex = 0;
   const totalImages = galleryItems.length;
   
-  // Open lightbox when clicking on a gallery image
-  galleryItems.forEach((img, index) => {
-    img.addEventListener('click', () => {
+  // Open lightbox when clicking on a gallery item
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', function() {
       currentImageIndex = index;
       updateLightboxImage();
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+      document.body.style.overflow = 'hidden';
     });
   });
   
   // Close lightbox
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = ''; // Re-enable scrolling
+    document.body.style.overflow = '';
   }
   
   // Update the lightbox image
   function updateLightboxImage() {
-    const imgSrc = galleryItems[currentImageIndex].src;
-    const imgAlt = galleryItems[currentImageIndex].alt;
+    const imgSrc = galleryItems[currentImageIndex].querySelector('img').src;
+    const imgAlt = galleryItems[currentImageIndex].querySelector('img').alt;
     lightboxImage.src = imgSrc;
     lightboxImage.alt = imgAlt;
   }
@@ -88,25 +86,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // Event listeners
   closeButton.addEventListener('click', closeLightbox);
   
-  prevButton.addEventListener('click', () => {
+  prevButton.addEventListener('click', function(e) {
+    e.stopPropagation();
     currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : totalImages - 1;
     updateLightboxImage();
   });
   
-  nextButton.addEventListener('click', () => {
+  nextButton.addEventListener('click', function(e) {
+    e.stopPropagation();
     currentImageIndex = (currentImageIndex < totalImages - 1) ? currentImageIndex + 1 : 0;
     updateLightboxImage();
   });
   
   // Close when clicking outside the image
-  lightbox.addEventListener('click', (e) => {
+  lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) {
       closeLightbox();
     }
   });
   
   // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', function(e) {
     if (!lightbox.classList.contains('active')) return;
     
     switch (e.key) {
@@ -123,4 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         break;
     }
   });
+  
+  // Initialize image protection after lightbox is set up
+  preventImageDownload();
 });
