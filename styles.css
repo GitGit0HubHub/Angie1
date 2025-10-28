@@ -1,0 +1,134 @@
+/* Base reset and variables */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+:root {
+  --bg: #0f0f10;
+  --card: #161618;
+  --text: #f2f2f3;
+  --muted: #b8b8bb;
+  --accent: #e7b0c8; /* soft rose */
+  --accent-2: #c3a6ff; /* soft lavender */
+  --radius: 14px;
+  --shadow: 0 8px 28px rgba(0,0,0,0.35);
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(160deg, #0d0d0e 0%, #121214 60%, #1a141a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.container.small { max-width: 720px; }
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(18, 18, 20, 0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 10;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand .name {
+  margin: 6px 0 0 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+.brand .tagline {
+  margin: 4px 0 10px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.locations {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+.hero picture, .hero img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+.intro {
+  background: linear-gradient(180deg, rgba(199,166,255,0.06), rgba(231,176,200,0.06));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.intro p { margin: 0 0 10px 0; }
+.highlights { margin: 10px 0 0 0; padding-left: 18px; }
+.highlights li { margin: 6px 0; }
+.muted { color: var(--muted); }
+
+/* Gallery */
+.gallery { margin-top: 12px; }
+.gallery .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  box-shadow: var(--shadow);
+}
+.gallery .note {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* Footer */
+.site-footer {
+  margin: 36px 0 28px 0;
+  text-align: center;
+  color: var(--muted);
+}
+.site-footer p { margin: 6px 0; }
+
+/* Desktop tweaks */
+@media (min-width: 800px) {
+  .brand .name { font-size: 2rem; }
+  .brand .tagline { font-size: 1.05rem; }
+
+  .hero {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  .intro { padding: 20px; }
+
+  .gallery .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
