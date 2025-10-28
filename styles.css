@@ -198,8 +198,8 @@ body {
   font-size: 0.9rem;
 }
 
-/* Prevent context menu on images */
-img {
+/* Prevent context menu on gallery thumbnails */
+.gallery-item img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -207,6 +207,16 @@ img {
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
+}
+
+/* Allow interactions with lightbox images */
+#lightbox-image {
+  pointer-events: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Lightbox */
