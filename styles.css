@@ -156,10 +156,18 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease;
   aspect-ratio: 3 / 4;
+  position: relative;
 }
 
-.gallery-item:hover {
-  transform: scale(1.02);
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .gallery-item img {
@@ -168,6 +176,15 @@ body {
   object-fit: cover;
   display: block;
   transition: opacity 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
 }
 
 .gallery-item:hover img {
@@ -179,6 +196,17 @@ body {
   color: var(--muted);
   margin-top: 16px;
   font-size: 0.9rem;
+}
+
+/* Prevent context menu on images */
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Lightbox */
