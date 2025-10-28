@@ -35,30 +35,70 @@ body {
   position: sticky;
   top: 0;
   backdrop-filter: blur(8px);
-  background: rgba(18, 18, 20, 0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(18, 18, 20, 0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 10;
+  padding: 6px 0;
 }
 .site-header .container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 8px 20px;
+}
+.brand {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-  gap: 16px;
+  align-items: center;
 }
 .brand .name {
-  margin: 6px 0 0 0;
-  font-size: 1.6rem;
+  margin: 0;
+  font-size: 1.5rem;
   letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 .brand .tagline {
-  margin: 4px 0 10px 0;
+  display: none; /* Hide tagline on mobile */
+  margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 .locations {
   color: var(--accent);
   font-weight: 600;
-  white-space: nowrap;
+  font-size: 0.95rem;
+  margin-top: 2px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Desktop styles */
+@media (min-width: 800px) {
+  .site-header .container {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  .brand {
+    width: auto;
+    display: block;
+  }
+  .brand .name { 
+    font-size: 2rem;
+    margin: 6px 0 0 0;
+  }
+  .brand .tagline {
+    display: block;
+    margin: 4px 0 10px 0;
+    font-size: 1.05rem;
+  }
+  .locations {
+    text-align: right;
+    width: auto;
+    margin-top: 0;
+  }
 }
 
 /* Hero */
