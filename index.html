@@ -56,13 +56,39 @@
     </section>
 
     <section class="gallery container" aria-label="Photo gallery">
-      <div class="grid">
-        <img src="Assets/2.webp" alt="Angie portrait 2" loading="lazy" decoding="async" />
-        <img src="Assets/3.webp" alt="Angie portrait 3" loading="lazy" decoding="async" />
-        <img src="Assets/4.webp" alt="Angie portrait 4" loading="lazy" decoding="async" />
-        <img src="Assets/5.webp" alt="Angie portrait 5" loading="lazy" decoding="async" />
-        <img src="Assets/6.webp" alt="Angie portrait 6" loading="lazy" decoding="async" />
-        <img src="Assets/7.webp" alt="Angie portrait 7" loading="lazy" decoding="async" />
+      <div class="slider-container">
+        <button class="slider-button prev" aria-label="Previous image">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slide">
+              <img src="Assets/2.webp" alt="Angie portrait 2" loading="lazy" decoding="async" />
+            </div>
+            <div class="slide">
+              <img src="Assets/3.webp" alt="Angie portrait 3" loading="lazy" decoding="async" />
+            </div>
+            <div class="slide">
+              <img src="Assets/4.webp" alt="Angie portrait 4" loading="lazy" decoding="async" />
+            </div>
+            <div class="slide">
+              <img src="Assets/5.webp" alt="Angie portrait 5" loading="lazy" decoding="async" />
+            </div>
+            <div class="slide">
+              <img src="Assets/6.webp" alt="Angie portrait 6" loading="lazy" decoding="async" />
+            </div>
+            <div class="slide">
+              <img src="Assets/7.webp" alt="Angie portrait 7" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+        <button class="slider-button next" aria-label="Next image">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
       </div>
       <p class="note">Discretion and class, always.</p>
     </section>
