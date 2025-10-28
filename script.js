@@ -1,28 +1,43 @@
 // Prevent image download and context menu
 function preventImageDownload() {
-  // Prevent context menu on images
-  document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
+  // Only apply to gallery thumbnails, not lightbox images
+  const galleryImages = document.querySelectorAll('.gallery-item img');
+  
+  galleryImages.forEach(img => {
+    // Prevent context menu
+    img.addEventListener('contextmenu', function(e) {
       e.preventDefault();
       return false;
-    }
-  }, false);
-
-  // Prevent touch and hold on mobile
-  document.addEventListener('touchstart', function(e) {
-    if (e.target.tagName === 'IMG') {
+    });
+    
+    // Prevent touch and hold
+    img.addEventListener('touchstart', function(e) {
       e.preventDefault();
       return false;
-    }
-  }, { passive: false });
-
-  // Prevent drag start
-  document.addEventListener('dragstart', function(e) {
-    if (e.target.tagName === 'IMG') {
+    }, { passive: false });
+    
+    // Prevent drag start
+    img.addEventListener('dragstart', function(e) {
       e.preventDefault();
       return false;
-    }
-  }, false);
+    });
+  });
+  
+  // For lightbox images, we need to allow some interactions
+  const lightboxImage = document.getElementById('lightbox-image');
+  if (lightboxImage) {
+    // Prevent right-click save in lightbox
+    lightboxImage.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Prevent drag and drop from lightbox
+    lightboxImage.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  }
 }
 
 // Lightbox functionality
