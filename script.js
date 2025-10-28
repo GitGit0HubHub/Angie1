@@ -1,5 +1,34 @@
+// Prevent image download and context menu
+function preventImageDownload() {
+  // Prevent context menu on images
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  }, false);
+
+  // Prevent touch and hold on mobile
+  document.addEventListener('touchstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  }, { passive: false });
+
+  // Prevent drag start
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  }, false);
+}
+
 // Lightbox functionality
 document.addEventListener('DOMContentLoaded', function() {
+  // Prevent image downloads
+  preventImageDownload();
   // Set current year in footer
   try {
     var y = document.getElementById('year');
