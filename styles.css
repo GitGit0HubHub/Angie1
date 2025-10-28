@@ -157,6 +157,7 @@ body {
   transition: transform 0.2s ease;
   aspect-ratio: 3 / 4;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .gallery-item::before {
@@ -180,6 +181,7 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  /* Allow pointer events to pass through to the parent */
   pointer-events: none;
 }
 
