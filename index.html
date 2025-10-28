@@ -56,47 +56,52 @@
     </section>
 
     <section class="gallery container" aria-label="Photo gallery">
-      <div class="slider-container">
-        <button class="slider-button prev" aria-label="Previous image">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="grid">
+        <div class="gallery-item">
+          <img src="Assets/2.webp" alt="Angie portrait 2" loading="lazy" decoding="async" data-index="0" />
+        </div>
+        <div class="gallery-item">
+          <img src="Assets/3.webp" alt="Angie portrait 3" loading="lazy" decoding="async" data-index="1" />
+        </div>
+        <div class="gallery-item">
+          <img src="Assets/4.webp" alt="Angie portrait 4" loading="lazy" decoding="async" data-index="2" />
+        </div>
+        <div class="gallery-item">
+          <img src="Assets/5.webp" alt="Angie portrait 5" loading="lazy" decoding="async" data-index="3" />
+        </div>
+        <div class="gallery-item">
+          <img src="Assets/6.webp" alt="Angie portrait 6" loading="lazy" decoding="async" data-index="4" />
+        </div>
+        <div class="gallery-item">
+          <img src="Assets/7.webp" alt="Angie portrait 7" loading="lazy" decoding="async" data-index="5" />
+        </div>
+      </div>
+      <p class="note">Discretion and class, always.</p>
+      
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-button prev" aria-label="Previous image">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 18l-6-6 6-6"/>
           </svg>
         </button>
-        <div class="slider">
-          <div class="slider-track">
-            <div class="slide">
-              <img src="Assets/2.webp" alt="Angie portrait 2" loading="lazy" decoding="async" />
-            </div>
-            <div class="slide">
-              <img src="Assets/3.webp" alt="Angie portrait 3" loading="lazy" decoding="async" />
-            </div>
-            <div class="slide">
-              <img src="Assets/4.webp" alt="Angie portrait 4" loading="lazy" decoding="async" />
-            </div>
-            <div class="slide">
-              <img src="Assets/5.webp" alt="Angie portrait 5" loading="lazy" decoding="async" />
-            </div>
-            <div class="slide">
-              <img src="Assets/6.webp" alt="Angie portrait 6" loading="lazy" decoding="async" />
-            </div>
-            <div class="slide">
-              <img src="Assets/7.webp" alt="Angie portrait 7" loading="lazy" decoding="async" />
-            </div>
-          </div>
+        <div class="lightbox-content">
+          <img src="" alt="" id="lightbox-image" />
         </div>
-        <button class="slider-button next" aria-label="Next image">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="lightbox-button next" aria-label="Next image">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18l6-6-6-6"/>
           </svg>
         </button>
       </div>
-      <p class="note">Discretion and class, always.</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container small">
       <p><a href="tel:+19196489023" class="phone-link">(919) 648-9023</a></p>
+      <p class="copyright">  <span id="year"></span> Angie. All rights reserved.</p>
       <p class="copyright">© <span id="year"></span> Angie. All rights reserved.</p>
     </div>
   </footer>
