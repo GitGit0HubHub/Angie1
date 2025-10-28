@@ -125,79 +125,39 @@ body {
 .highlights li { margin: 6px 0; }
 .muted { color: var(--muted); }
 
-/* Gallery Slider */
+/* Gallery */
 .gallery { 
   margin-top: 24px;
-  position: relative;
 }
 
-.slider-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
+.gallery .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
-.slider {
-  width: 100%;
-  overflow: hidden;
+.gallery-item {
   border-radius: 12px;
-  box-shadow: var(--shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  aspect-ratio: 3 / 4;
 }
 
-.slider-track {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
+.gallery-item:hover {
+  transform: scale(1.02);
 }
 
-.slide {
-  min-width: 100%;
-  position: relative;
-  aspect-ratio: 3/4;
-}
-
-.slide img {
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 0.3s ease;
 }
 
-.slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 60px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  z-index: 2;
-  transition: background-color 0.2s;
-}
-
-.slider-button:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.slider-button.prev {
-  left: 10px;
-}
-
-.slider-button.next {
-  right: 10px;
-}
-
-.slider-button svg {
-  width: 24px;
-  height: 24px;
+.gallery-item:hover img {
+  opacity: 0.9;
 }
 
 .gallery .note {
@@ -205,6 +165,113 @@ body {
   color: var(--muted);
   margin-top: 16px;
   font-size: 0.9rem;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 1002;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.lightbox-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  z-index: 1001;
+  transition: background-color 0.2s;
+}
+
+.lightbox-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-button.prev {
+  left: 20px;
+}
+
+.lightbox-button.next {
+  right: 20px;
+}
+
+.lightbox-button svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2;
+}
+
+/* Desktop tweaks */
+@media (min-width: 800px) {
+  .gallery .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
 }
 
 /* Footer */
